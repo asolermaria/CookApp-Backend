@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 // Importamos rutas
-const routesUsers = require("./routes/users.routes")
+const authRoutes = require("./routes/authRoutes")
 
 //Conexión con BBDD MongoDB
 const connectMongo = require ("./config/db_mongo")
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Usamos rutas
-app.use("/api/users", routesUsers)
+app.use("/api/auth", authRoutes)
 
 // Prueba funcionamiento server
 app.get("/", (req, res) => {
