@@ -1,0 +1,362 @@
+{
+  "info": {
+    "_postman_id": "52913bf3-360f-4591-9ca6-207547766d17",
+    "name": "CookApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30054484",
+    "_collection_link": "https://go.postman.co/collection/30054484-52913bf3-360f-4591-9ca6-207547766d17?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Laura García\",\r\n  \"email\": \"laurita9@gmail.com\",\r\n  \"password\": \"Securepassword123$\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"laurita8@gmail.com\",\r\n  \"password\": \"Securepassword123$\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/logout",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET All Recipes",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/recipes/?title=tor&difficulty=Media",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ],
+          "query": [
+            {
+              "key": "title",
+              "value": "tor"
+            },
+            {
+              "key": "difficulty",
+              "value": "Media"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET My Recipes",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/recipes/myrecipes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recipes",
+            "myrecipes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Recipe by ID",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/recipes/6a006d72f3be161ce0447059",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recipes",
+            "6a006d72f3be161ce0447059"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Recipe",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Tortilla de patatas\",\r\n  \"image\": \"https://example.com/tortilla.jpg\",\r\n  \"ingredients\": [\r\n    \"4 patatas\",\r\n    \"6 huevos\",\r\n    \"1 cebolla\",\r\n    \"Aceite de oliva\",\r\n    \"Sal\"\r\n  ],\r\n  \"steps\": \"Pelar las patatas, freírlas, mezclar con huevo y cocinar la tortilla.\",\r\n  \"difficulty\": \"Media\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/recipes/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recipes",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Recipe",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Tortilla de patatas\",\r\n  \"image\": \"https://example.com/tortilla.jpg\",\r\n  \"ingredients\": [\r\n    \"6 patatas\",\r\n    \"6 huevos\",\r\n    \"1 cebolla\",\r\n    \"Aceite de oliva\",\r\n    \"Sal\"\r\n  ],\r\n  \"steps\": \"Pelar las patatas, freírlas, mezclar con huevo y cocinar la tortilla.\",\r\n  \"difficulty\": \"Baja\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/recipes/6a0067fb15d00a3605ec13bc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recipes",
+            "6a0067fb15d00a3605ec13bc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Recipe",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/recipes/6a006d72f3be161ce0447059",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "recipes",
+            "6a006d72f3be161ce0447059"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Favorites",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/favorites",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "favorites"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Favorite",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/favorites/6a0067fb15d00a3605ec13bc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "favorites",
+            "6a0067fb15d00a3605ec13bc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Favorite",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/favorites/6a0067fb15d00a3605ec13bc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "favorites",
+            "6a0067fb15d00a3605ec13bc"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
