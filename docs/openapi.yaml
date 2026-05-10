@@ -1,0 +1,280 @@
+openapi: 3.0.0
+
+info:
+  title: CookApp
+  version: 1.0.0
+  description: API para autenticación, recetas y favoritos
+
+servers:
+  - url: /
+    description: API same origin
+
+tags:
+  - name: Auth
+  - name: Recipes
+  - name: Favorites
+
+paths:
+  /api/auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Laura García
+                email: laurita9@gmail.com
+                password: Securepassword123$
+      responses:
+        "201":
+          description: Usuario creado correctamente
+        "400":
+          description: Datos inválidos
+        "409":
+          description: Email ya registrado
+
+  /api/auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: laurita8@gmail.com
+                password: Securepassword123$
+      responses:
+        "200":
+          description: Login correcto
+        "400":
+          description: Faltan datos obligatorios
+        "401":
+          description: Credenciales inválidas
+
+  /api/auth/logout:
+    post:
+      tags:
+        - Auth
+      summary: Logout
+      responses:
+        "200":
+          description: Sesión cerrada
+
+  /api/recipes:
+    get:
+      tags:
+        - Recipes
+      summary: Obtener todas las recetas
+      parameters:
+        - name: title
+          in: query
+          required: false
+          schema:
+            type: string
+          example: tor
+        - name: difficulty
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [Baja, Media, Alta]
+          example: Media
+      responses:
+        "200":
+          description: Lista de recetas
+
+    post:
+      tags:
+        - Recipes
+      summary: Crear receta
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Tortilla de patatas
+                image: https://example.com/tortilla.jpg
+                ingredients:
+                  - 4 patatas
+                  - 6 huevos
+                  - 1 cebolla
+                  - Aceite de oliva
+                  - Sal
+                steps: Pelar las patatas, freírlas, mezclar con huevo y cocinar la tortilla.
+                difficulty: Media
+      responses:
+        "201":
+          description: Receta creada
+        "401":
+          description: No autorizado
+
+  /api/recipes/myrecipes:
+    get:
+      tags:
+        - Recipes
+      summary: Obtener mis recetas
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Lista de recetas del usuario autenticado
+        "401":
+          description: No autorizado
+
+  /api/recipes/{id}:
+    get:
+      tags:
+        - Recipes
+      summary: Obtener receta por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 6a006d72f3be161ce0447059
+      responses:
+        "200":
+          description: Receta encontrada
+        "404":
+          description: Receta no encontrada
+
+    put:
+      tags:
+        - Recipes
+      summary: Actualizar receta
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 6a0067fb15d00a3605ec13bc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Tortilla de patatas
+                image: https://example.com/tortilla.jpg
+                ingredients:
+                  - 6 patatas
+                  - 6 huevos
+                  - 1 cebolla
+                  - Aceite de oliva
+                  - Sal
+                steps: Pelar las patatas, freírlas, mezclar con huevo y cocinar la tortilla.
+                difficulty: Baja
+      responses:
+        "200":
+          description: Receta actualizada
+        "401":
+          description: No autorizado
+        "403":
+          description: No puedes editar esta receta
+        "404":
+          description: Receta no encontrada
+
+    delete:
+      tags:
+        - Recipes
+      summary: Eliminar receta
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 6a006d72f3be161ce0447059
+      responses:
+        "200":
+          description: Receta eliminada
+        "401":
+          description: No autorizado
+        "403":
+          description: No puedes eliminar esta receta
+        "404":
+          description: Receta no encontrada
+
+  /api/favorites:
+    get:
+      tags:
+        - Favorites
+      summary: Obtener favoritos
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Lista de favoritos del usuario autenticado
+        "401":
+          description: No autorizado
+
+  /api/favorites/{recipeId}:
+    post:
+      tags:
+        - Favorites
+      summary: Añadir receta a favoritos
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 6a0067fb15d00a3605ec13bc
+      responses:
+        "201":
+          description: Favorito creado
+        "401":
+          description: No autorizado
+        "404":
+          description: Receta no encontrada
+        "409":
+          description: La receta ya está en favoritos
+
+    delete:
+      tags:
+        - Favorites
+      summary: Eliminar receta de favoritos
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 6a0067fb15d00a3605ec13bc
+      responses:
+        "200":
+          description: Favorito eliminado
+        "401":
+          description: No autorizado
+        "404":
+          description: Favorito no encontrado
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: accessToken
