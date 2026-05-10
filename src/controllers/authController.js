@@ -135,8 +135,15 @@ const login = async (req, res) => {
 };
 
 const logout = (_req, res) => {
-  res.clearCookie("accessToken");
-  return res.status(200).json({ message: "Sesion cerrada" });
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: false,
+  });
+
+  return res.status(200).json({
+    message: "Sesión cerrada",
+  });
 };
 
 module.exports = {
