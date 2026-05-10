@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 
+// POST
+// /api/auth/register
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -78,6 +80,8 @@ const register = async (req, res) => {
   }
 };
 
+// POST
+// /api/auth/login
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -134,6 +138,8 @@ const login = async (req, res) => {
   }
 };
 
+// POST
+// /api/auth/logout
 const logout = (_req, res) => {
   res.clearCookie("accessToken", {
     httpOnly: true,

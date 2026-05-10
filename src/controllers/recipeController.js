@@ -1,7 +1,7 @@
 const Recipe = require("../models/Recipe");
 
 // GET
-// http://localhost:3000/api/recipes/all ?title=tor&difficulty=Media
+// /api/recipes/all ?title=tor&difficulty=Media
 const getRecipes = async (req, res) => {
   const { title, difficulty } = req.query;
 
@@ -24,7 +24,7 @@ const getRecipes = async (req, res) => {
 };
 
 // GET
-// http://localhost:3000/api/recipes/(id)
+// /api/recipes/(id)
 const getRecipeById = async (req, res) => {
   const recipe = await Recipe.findById(req.params.id).populate(
     "user_id",
@@ -41,7 +41,7 @@ const getRecipeById = async (req, res) => {
 };
 
 // GET
-// http://localhost:3000/api/recipes/myrecipes
+// /api/recipes/myrecipes
 const getMyRecipes = async (req, res) => {
   const recipes = await Recipe.find({ user_id: req.user.id });
 
@@ -49,7 +49,7 @@ const getMyRecipes = async (req, res) => {
 };
 
 // POST
-// http://localhost:3000/api/recipes/
+// /api/recipes/
 const createRecipe = async (req, res) => {
   const { title, image, ingredients, steps, difficulty } = req.body;
 
@@ -74,7 +74,7 @@ const createRecipe = async (req, res) => {
 };
 
 // PUT
-// http://localhost:3000/api/recipes/(id)
+// /api/recipes/(id)
 const updateRecipe = async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
 
@@ -98,7 +98,7 @@ const updateRecipe = async (req, res) => {
 };
 
 // DELETE
-// http://localhost:3000/api/recipes/(id)
+// /api/recipes/(id)
 const deleteRecipe = async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
 

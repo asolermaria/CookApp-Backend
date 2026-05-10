@@ -2,7 +2,7 @@ const Favorite = require("../models/Favorite");
 const Recipe = require("../models/Recipe");
 
 // GET
-// http://localhost:3000/api/favorites
+// /api/favorites
 const getFavorites = async (req, res) => {
   const favorites = await Favorite.find({
     user_id: req.user.id,
@@ -18,7 +18,7 @@ const getFavorites = async (req, res) => {
 };
 
 // POST
-// http://localhost:3000/api/favorites/(recipeId)
+// /api/favorites/(recipeId)
 const addFavorite = async (req, res) => {
   const recipe = await Recipe.findById(req.params.recipeId);
 
@@ -47,6 +47,8 @@ const addFavorite = async (req, res) => {
   res.status(201).json(favorite);
 };
 
+// DELETE
+// /api/favorites/(recipeId)
 const removeFavorite = async (req, res) => {
   const favorite = await Favorite.findOne({
     user_id: req.user.id,
