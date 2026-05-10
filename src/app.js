@@ -6,6 +6,7 @@ require("dotenv").config();
 // Importamos rutas
 const authRoutes = require("./routes/authRoutes")
 const recipeRoutes = require("./routes/recipeRoutes")
+const favoriteRoutes = require("./routes/favoriteRoutes")
 
 //Conexión con BBDD MongoDB
 const connectMongo = require ("./config/db_mongo")
@@ -21,6 +22,7 @@ app.use(cookieParser());
 // Usamos rutas
 app.use("/api/auth", authRoutes)
 app.use("/api/recipes", recipeRoutes)
+app.use("/api/favorites", favoriteRoutes)
 
 // Prueba funcionamiento server
 app.get("/", (req, res) => {
