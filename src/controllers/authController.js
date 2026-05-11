@@ -14,7 +14,7 @@ const register = async (req, res) => {
     // Validación datos de entrada
     if (!name || !email || !password) {
       return res.status(400).json({
-        message: "Faltan datos obligatorios: { name, email, password }",
+        message: "Faltan datos obligatorios: nombre, email, contraseña",
       });
     }
 
@@ -87,7 +87,7 @@ const login = async (req, res) => {
 
   if (!email || !password) {
     return res.status(400).json({
-      message: "Faltan datos obligatorios: { email, password }",
+      message: "Faltan datos obligatorios: email, contraseña",
     });
   }
 
