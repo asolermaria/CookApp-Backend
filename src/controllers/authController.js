@@ -116,8 +116,8 @@ const login = async (req, res) => {
 
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false, // REVIEW: CAMBIAR A TRUE EN PRODUCCIÓN (HTTPS)
+      sameSite: "none", // Cambiar a "lax" si se requieren pruebas en localhost
+      secure: true, // Necesario para viajar al frontend en producción (HTTPS), cambiar a false si se requieren pruebas en localhost
       maxAge: 20 * 60 * 1000,
     });
 
