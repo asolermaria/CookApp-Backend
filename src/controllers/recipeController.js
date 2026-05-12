@@ -1,4 +1,5 @@
 const Recipe = require("../models/Recipe");
+const Favorite = require("../models/Favorite");
 
 // GET
 // /api/recipes/all ?title=tor&difficulty=Media
@@ -20,7 +21,20 @@ const getRecipes = async (req, res) => {
 
   const recipes = await Recipe.find(filters).populate("user_id", "name email"); // Traemos el nombre y email del usuario creador de la receta
 
-  res.status(200).json(recipes);
+  const favorites = await Favorite.find({ // Guardamos los favoritos del usuario en sesión
+    user_id: req.user.id,
+  });
+
+  const favoriteIds = favorites.map((favorite) => // Saca solo el recipe_id de cada receta favorita del usuario
+    favorite.recipe_id.toString(), // Convertimos a String, ya que el ID en Mongo se guarda como ObjectId
+  );
+
+  const recipesWithFavorites = recipes.map((recipe) => ({
+    ...recipe.toObject(), // Convertimos el documento mongoose en objeto JS
+    isFavourite: favoriteIds.includes(recipe._id.toString()), // Añadimos al objeto la propiedad isFavourite
+  }));
+
+  res.status(200).json(recipesWithFavorites);
 };
 
 // GET
@@ -37,7 +51,22 @@ const getRecipeById = async (req, res) => {
     });
   }
 
-  res.status(200).json(recipe);
+  // Guardamos los favoritos del usuario en sesión
+  const favorites = await Favorite.find({
+    user_id: req.user.id,
+  });
+
+  // Sacamos solo el recipe_id de cada receta favorita del usuario
+  const favoriteIds = favorites.map((favorite) =>
+    favorite.recipe_id.toString(), // Convertimos a String, ya que el ID en Mongo se guarda como ObjectId
+  );
+
+  const recipeWithFavorite = {
+    ...recipe.toObject(), // Convertimos el documento mongoose en objeto JS
+    isFavourite: favoriteIds.includes(recipe._id.toString()), // Añadimos al objeto la propiedad isFavourite
+  };
+
+  res.status(200).json(recipeWithFavorite);
 };
 
 // GET

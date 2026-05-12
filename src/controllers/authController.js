@@ -152,8 +152,20 @@ const logout = (_req, res) => {
   });
 };
 
+// GET
+// /api/auth/active-user
+const getActiveUser = async (req, res) => {
+  res.status(200).json({
+    user: {
+      id: req.user.id,
+      name: req.user.name,
+    },
+  });
+};
+
 module.exports = {
   register,
   login,
-  logout
+  logout,
+  getActiveUser
 };
