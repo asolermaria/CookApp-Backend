@@ -86,7 +86,7 @@ const createRecipe = async (req, res) => {
   if (!title || !image || !ingredients || !steps || !difficulty) {
     return res.status(400).json({
       message:
-        "Faltan datos obligatorios: { title, image, ingredients, steps, difficulty }",
+        "Faltan datos obligatorios: titulo, imagen, ingredientes, pasos, difficultad.",
     });
   }
 
