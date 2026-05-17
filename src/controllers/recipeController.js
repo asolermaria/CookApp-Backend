@@ -117,6 +117,14 @@ const updateRecipe = async (req, res) => {
 
   const { title, image, ingredients, steps, difficulty } = req.body;
 
+  // Validación datos de entrada
+  if (!title || !image || !ingredients || !steps || !difficulty) {
+    return res.status(400).json({
+      message:
+        "Faltan datos obligatorios: titulo, imagen, ingredientes, pasos, difficultad.",
+    });
+  }
+
   const updatedRecipe = await Recipe.findByIdAndUpdate(
     req.params.id,
     { title, image, ingredients, steps, difficulty },
