@@ -1,31 +1,33 @@
-# CookApp Backend API
+# 🍳 CookApp Backend API
 
-API backend de CookApp, una aplicación fullstack de recetas donde los usuarios pueden registrarse, iniciar sesión, crear recetas, gestionar favoritos y editar su propio contenido.
-
-## Despliegue
-
-* Backend: [https://cookapp-backend-6lg0.onrender.com](https://cookapp-backend-6lg0.onrender.com)
-* Frontend: [https://lustrous-choux-3c11f9.netlify.app/](https://lustrous-choux-3c11f9.netlify.app/)
-* Repositorio Frontend: [https://github.com/asolermaria/CookApp-Frontend.git](https://github.com/asolermaria/CookApp-Frontend.git)
+API backend de **CookApp**, una aplicación fullstack de recetas donde los usuarios pueden registrarse, iniciar sesión, crear recetas, gestionar favoritos y editar su propio contenido.
 
 ---
 
-# Funcionalidades
+# 🚀 Despliegue
 
-* Autenticación JWT con cookies HTTP-only
-* Registro e inicio de sesión de usuarios
-* Rutas protegidas mediante middleware de autenticación
-* Crear, editar y eliminar recetas
-* Sistema de recetas favoritas
-* Filtrado de recetas por título y dificultad
-* Integración con MongoDB
-* Documentación Swagger/OpenAPI
-* Middleware de seguridad Helmet
-* Configuración CORS para integración con frontend
+* Backend: https://cookapp-backend-6lg0.onrender.com
+* Frontend: https://lustrous-choux-3c11f9.netlify.app/
+* Repositorio Frontend: https://github.com/asolermaria/CookApp-Frontend.git
 
 ---
 
-# Tecnologías utilizadas
+# ✨ Funcionalidades
+
+* 🔐 Autenticación JWT con cookies HTTP-only
+* 👤 Registro e inicio de sesión de usuarios
+* 🛡️ Rutas protegidas mediante middleware de autenticación
+* 🍝 Crear, editar y eliminar recetas
+* ❤️ Sistema de recetas favoritas
+* 🔎 Filtrado de recetas por título y dificultad
+* 🍃 Integración con MongoDB
+* 📄 Documentación Swagger/OpenAPI
+* 🪖 Middleware de seguridad Helmet
+* 🌐 Configuración CORS para integración con frontend
+
+---
+
+# 🛠️ Tecnologías utilizadas
 
 * Node.js
 * Express.js
@@ -40,7 +42,7 @@ API backend de CookApp, una aplicación fullstack de recetas donde los usuarios 
 
 ---
 
-# Estructura del proyecto
+# 📁 Estructura del proyecto
 
 ```bash
 src/
@@ -54,7 +56,7 @@ src/
 
 ---
 
-# Variables de entorno
+# ⚙️ Variables de entorno
 
 Crea un archivo `.env` en la raíz del proyecto:
 
@@ -67,7 +69,7 @@ FRONTEND_URL=
 
 ---
 
-# Instalación
+# 📦 Instalación
 
 ## Clonar repositorio
 
@@ -89,9 +91,9 @@ npm start
 
 ---
 
-# Endpoints principales
+# 📚 Endpoints principales
 
-## Autenticación
+## 🔐 Autenticación
 
 | Método | Endpoint              | Descripción                 |
 | ------ | --------------------- | --------------------------- |
@@ -100,7 +102,9 @@ npm start
 | POST   | /api/auth/logout      | Cerrar sesión               |
 | GET    | /api/auth/active-user | Obtener usuario autenticado |
 
-## Recetas
+---
+
+## 🍳 Recetas
 
 | Método | Endpoint               | Descripción                 |
 | ------ | ---------------------- | --------------------------- |
@@ -111,7 +115,9 @@ npm start
 | PUT    | /api/recipes/:id       | Editar receta               |
 | DELETE | /api/recipes/:id       | Eliminar receta             |
 
-## Favoritos
+---
+
+## ❤️ Favoritos
 
 | Método | Endpoint                 | Descripción       |
 | ------ | ------------------------ | ----------------- |
@@ -121,7 +127,7 @@ npm start
 
 ---
 
-# Documentación Swagger
+# 📖 Documentación Swagger
 
 La documentación de la API está disponible en:
 
@@ -131,19 +137,19 @@ La documentación de la API está disponible en:
 
 ---
 
-# Seguridad
+# 🔒 Seguridad
 
 El backend incluye:
 
-* Autenticación JWT
-* Cookies HTTP-only
-* Headers de seguridad con Helmet
-* Hash de contraseñas con bcrypt
-* Middleware de rutas protegidas
-* Configuración CORS
+* 🔐 Autenticación JWT
+* 🍪 Cookies HTTP-only
+* 🪖 Headers de seguridad con Helmet
+* 🔑 Hash de contraseñas con bcrypt
+* 🛡️ Middleware de rutas protegidas
+* 🌐 Configuración CORS
 
 ---
 
-# Autor
+# 👩‍💻 Autor
 
 Desarrollado por Antonio Soler Maria.
